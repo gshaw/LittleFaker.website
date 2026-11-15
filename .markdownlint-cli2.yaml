@@ -1,0 +1,6 @@
+ignores:
+  - "public/**"
+  - "resources/**"
+  - "tmp/**"
+  - ".claude/**"
+  - "CLAUDE.md" # import shim (@AGENTS.md), not prose

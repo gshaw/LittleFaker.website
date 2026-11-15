@@ -1,0 +1,17 @@
+# Hugo build output and its cache
+public
+resources
+.hugo_build.lock
+
+# Scratch: mockups, the App Store movie's masters
+tmp
+
+# Editor and agent tooling
+.vscode
+.claude
+
+# macOS
+.DS_Store
+
+# Wrangler state from a deploy run on the Mac
+.wrangler

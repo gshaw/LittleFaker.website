@@ -1,0 +1,67 @@
+[tools]
+# Workers Builds reads HUGO_VERSION from the Worker's two build triggers: change
+# all three together. See AGENTS.md.
+hugo = "0.167.0"
+node = "24.4.1"
+"npm:cspell" = "9.1.5"
+"npm:markdownlint-cli2" = "0.22.1"
+lychee = "0.24.2"
+# Workers Builds deploys with this version too (npx wrangler@…).
+"npm:wrangler" = "4.143.1"
+
+[tasks.dev]
+run = "hugo server --port 4004 --openBrowser"
+
+[tasks.build]
+run = "hugo --quiet --cleanDestinationDir --panicOnWarning"
+
+[tasks.spell]
+run = "cspell lint --no-progress ."
+
+[tasks.markdownlint]
+run = """
+out=$(markdownlint-cli2 '**/*.md' 2>&1) && echo "Markdown lint passed" || { echo "$out"; exit 1; }
+"""
+
+# Internal links and images only. External sites rate-limit and flake; check
+# them by hand with `lychee public` when it matters.
+[tasks.links]
+depends = ["build"]
+run = "lychee --offline --no-progress --root-dir \"$PWD/public\" 'public/**/*.html'"
+
+[tasks.check]
+depends = ["spell", "markdownlint", "links"]
+
+# The home page's screenshots and og.jpg, cropped from the App Store screenshots in
+# the LittleFaker repo. See scripts/shots.py.
+[tasks.shots]
+run = "uv run -q --with pillow python -I scripts/shots.py"
+
+# Run by deploy once Workers Builds has deployed main.
+[tasks.verify]
+run = """
+set -e
+curl -fsS https://littlefaker.gshaw.ca/ | grep -q "<title>Little Faker"
+echo "littlefaker.gshaw.ca is up"
+curl -fsS -o /dev/null https://littlefaker.gshaw.ca/screenshots/fake-info.jpg
+echo "The screenshot is there"
+test "$(curl -s -o /dev/null -w '%{http_code}' https://littlefaker.gshaw.ca/no-such-page/)" = 404
+echo "404 page works"
+"""
+
+# The one way to production. See Workshop's Tooling/deploy.md. Workers Builds
+# builds and deploys main on push, so the push is the deploy and main may be ahead of origin.
+# The guard runs again after check in case check changed a file.
+[tasks.deploy]
+run = [
+  "scripts/deploy-guard.sh --allow-ahead",
+  "mise run check",
+  "scripts/deploy-guard.sh --allow-ahead",
+  "git push origin main",
+  "scripts/build-status.sh --wait",
+  "mise run verify",
+  'echo "✅ $(git rev-parse --short HEAD) is live on littlefaker.gshaw.ca and verified."',
+]
+
+[tasks.deploy-status]
+run = "scripts/build-status.sh"

@@ -1,0 +1,21 @@
+# cspell:ignore robotstxt linkify
+baseURL = "https://littlefaker.gshaw.ca/"
+title = "Little Faker"
+disableHugoGeneratorInject = true
+# No sitemap, robots.txt or RSS. content/404.md is the 404 page.
+disableKinds = ["taxonomy", "term", "section", "rss", "sitemap", "robotstxt", "404"]
+
+[params]
+description = "Fake text and data from your Mac's menu bar: lorem ipsum or real writing in five languages, and fake info for eight countries. Free. No ads. Privacy respected."
+icon = "/icon.png"
+ogimage = "/og.jpg"
+start_year = 2022
+[params.author]
+name = "Gerry Shaw"
+email = "gerry_shaw@yahoo.com"
+url = "https://gshaw.ca"
+
+[markup.goldmark.renderer]
+unsafe = true    # raw HTML in Markdown: the movie, the screenshots, the App Store badge
+[markup.goldmark.extensions]
+linkify = false # bare URLs stay text
