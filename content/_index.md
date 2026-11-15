@@ -4,9 +4,9 @@ title: Little Faker
 
 Fast fake text generator for macOS. Free. No ads. Privacy respected.
 
-<!-- <figure class="shot">
+<figure class="shot">
 <img src="/screenshots/fake-info.jpg" alt="The Little Faker menu with Fake Info open, showing a fake name, job title, date of birth, business, addresses and a 555 phone number" width="1700" height="1360">
-</figure> -->
+</figure>
 
 ## Features
 
