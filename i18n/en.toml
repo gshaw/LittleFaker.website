@@ -1,0 +1,3 @@
+appIcon = "{{ .Title }} app icon"
+support = "Support"
+privacy = "Privacy Policy"

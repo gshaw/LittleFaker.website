@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ site.Language.Locale }}">
 
 {{ partial "head.html" . }}
 
 <body>
   <main class="container">
     <h1>
-      <a href="/">
-        <img alt="{{ site.Title }} app icon" src="{{ site.Params.icon }}" width="50" height="50">
+      <a href="{{ "/" | relLangURL }}">
+        <img alt="{{ T "appIcon" (dict "Title" site.Title) }}" src="{{ site.Params.icon }}" width="50" height="50">
       </a>
       <span style="vertical-align: middle">{{ .Title }}</span>
     </h1>
@@ -17,13 +17,23 @@
     <hr>
 
     <p>
-      <a href="/">{{ site.Title }}</a>
+      <a href="{{ "/" | relLangURL }}">{{ site.Title }}</a>
       •
-      <a href="/support/">Support</a>
+      <a href="{{ "/support/" | relLangURL }}">{{ T "support" }}</a>
       •
-      <a href="/privacy/">Privacy Policy</a>
+      <a href="{{ "/privacy/" | relLangURL }}">{{ T "privacy" }}</a>
       •
       © {{ site.Params.start_year }} - {{ now.Year }} <a href="{{ site.Params.author.url }}">{{ site.Params.author.name }}</a>
+    </p>
+    <p>
+      {{- range $i, $page := .AllTranslations }}
+      {{- if $i }} • {{ end }}
+      {{- if eq $page.Language.Lang $.Language.Lang }}
+      <strong>{{ $page.Language.Label }}</strong>
+      {{- else }}
+      <a href="{{ $page.RelPermalink }}" hreflang="{{ $page.Language.Locale }}" lang="{{ $page.Language.Locale }}">{{ $page.Language.Label }}</a>
+      {{- end }}
+      {{- end }}
     </p>
   </main>
 </body>

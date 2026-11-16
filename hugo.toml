@@ -4,6 +4,9 @@ title = "Little Faker"
 disableHugoGeneratorInject = true
 # No sitemap, robots.txt or RSS. content/404.md is the 404 page.
 disableKinds = ["taxonomy", "term", "section", "rss", "sitemap", "robotstxt", "404"]
+# English at /, the app's other four languages under /de/ and so on. Every page is in
+# every language: scripts/languages.sh fails the check otherwise.
+defaultContentLanguage = "en"
 
 [params]
 description = "Fake text and data from your Mac's menu bar: lorem ipsum or real writing in five languages, and fake info for eight countries. Free. No ads. Privacy respected."
@@ -19,3 +22,38 @@ url = "https://gshaw.ca"
 unsafe = true    # raw HTML in Markdown: the movie, the screenshots, the App Store badge
 [markup.goldmark.extensions]
 linkify = false # bare URLs stay text
+
+[languages.en]
+locale = "en"
+label = "English"
+weight = 1
+# cspell:disable - the other languages' descriptions; cspell checks English only
+[languages.de]
+locale = "de"
+label = "Deutsch"
+weight = 2
+[languages.de.params]
+description = "Blindtext und fiktive Daten aus der Menüleiste deines Mac: Lorem ipsum oder echt wirkender Text in fünf Sprachen und fiktive Daten für acht Länder. Kostenlos. Keine Werbung. Deine Privatsphäre bleibt geschützt."
+ogimage = "/og.de.jpg"
+[languages.fr]
+locale = "fr"
+label = "Français"
+weight = 3
+[languages.fr.params]
+description = "Du faux texte et des données fictives depuis la barre des menus de votre Mac : lorem ipsum ou texte réaliste en cinq langues, et données fictives pour huit pays. Gratuit. Sans publicité. Respectueux de votre vie privée."
+ogimage = "/og.fr.jpg"
+[languages.ja]
+locale = "ja"
+label = "日本語"
+weight = 4
+[languages.ja.params]
+description = "Macのメニューバーからダミーテキストと架空のデータを。Lorem Ipsumまたは5つの言語のリアルなテキスト、8つの国の架空のデータ。無料、広告なし、プライバシーを尊重。"
+ogimage = "/og.ja.jpg"
+[languages.zh-hans]
+locale = "zh-Hans"
+label = "简体中文"
+weight = 5
+[languages.zh-hans.params]
+description = "从 Mac 菜单栏拷贝假文和虚构信息：Lorem Ipsum 或五种语言的逼真文本，以及八个国家的虚构信息。免费，没有广告，尊重隐私。"
+ogimage = "/og.zh-hans.jpg"
+# cspell:enable

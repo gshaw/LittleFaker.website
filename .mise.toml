@@ -12,8 +12,13 @@ lychee = "0.24.2"
 [tasks.dev]
 run = "hugo server --port 4004 --openBrowser"
 
+# --printI18nWarnings with --panicOnWarning: a template string missing in a language fails.
 [tasks.build]
-run = "hugo --quiet --cleanDestinationDir --panicOnWarning"
+run = "hugo --quiet --cleanDestinationDir --panicOnWarning --printI18nWarnings"
+
+# Every page in every language: scripts/languages.sh.
+[tasks.languages]
+run = "scripts/languages.sh"
 
 [tasks.spell]
 run = "cspell lint --no-progress ."
@@ -30,7 +35,7 @@ depends = ["build"]
 run = "lychee --offline --no-progress --root-dir \"$PWD/public\" 'public/**/*.html'"
 
 [tasks.check]
-depends = ["spell", "markdownlint", "links"]
+depends = ["languages", "spell", "markdownlint", "links"]
 
 # The home page's screenshots and og.jpg, cropped from the App Store screenshots in
 # the LittleFaker repo. See scripts/shots.py.
@@ -45,6 +50,14 @@ curl -fsS https://littlefaker.gshaw.ca/ | grep -q "<title>Little Faker"
 echo "littlefaker.gshaw.ca is up"
 curl -fsS -o /dev/null https://littlefaker.gshaw.ca/screenshots/contact.jpg
 echo "The screenshot is there"
+for pair in de:de fr:fr ja:ja zh-hans:zh-Hans; do
+  lang=${pair%%:*}
+  curl -fsS "https://littlefaker.gshaw.ca/$lang/" | grep -q "<html lang=\"${pair#*:}\">"
+  curl -fsS -o /dev/null "https://littlefaker.gshaw.ca/screenshots/contact.$lang.jpg"
+  curl -fsS -o /dev/null "https://littlefaker.gshaw.ca/$lang/support/"
+  curl -fsS -o /dev/null "https://littlefaker.gshaw.ca/$lang/privacy/"
+done
+echo "German, French, Japanese and Chinese pages and screenshots are there"
 test "$(curl -s -o /dev/null -w '%{http_code}' https://littlefaker.gshaw.ca/no-such-page/)" = 404
 echo "404 page works"
 """

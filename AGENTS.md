@@ -1,4 +1,4 @@
-<!-- cspell:ignore DMARC ictool xcprivacy aedsim -->
+<!-- cspell:ignore DMARC ictool xcprivacy aedsim xcstrings vous -->
 
 # Agent Notes
 
@@ -59,16 +59,32 @@ SPF, DKIM, DMARC or `apple-domain` records.
 - `layouts/baseof.html` is the page shell. `layouts/_partials/head.html` has the meta and
   Open Graph tags and the screenshot's style; a page can override the description
   with `description:` and the preview image with `ogimage:` in front matter.
-- `content/`: `_index.md` (the home page), `support.md`, `privacy.md`, `404.md`.
-- The home page shows one screenshot, Contact, as `<figure class="shot">`. On a phone,
-  CSS crops off the mostly empty left side.
+- `content/`: `_index.md` (the home page), `support.md`, `privacy.md`, `404.md`, each
+  also as `<page>.de.md`, `.fr.md`, `.ja.md` and `.zh-hans.md`.
+- The home page shows one screenshot, Contact, as `<figure class="shot">`, in the page's
+  language. On a phone, CSS crops off the mostly empty left side.
 - `static/` is published as it is: the icon (rendered from the app's `AppIcon.icon` with
   Icon Composer's `ictool`), the QR code, `og.jpg`, `pico.min.css` (Pico 1.5, copied in)
   and `screenshots/`.
-- `scripts/shots.py` crops `static/screenshots/` and `og.jpg` from the English App Store
-  screenshots in the LittleFaker repo, with wallpaper added past the right edge so the
+- `scripts/shots.py` crops `static/screenshots/` and the `og` images from each language's
+  App Store screenshots in the LittleFaker repo, with wallpaper added past the right edge so the
   rounded corners don't clip the menu bar.
 - `public/` is build output and `tmp/` is scratch; both are gitignored.
+
+## Languages
+
+The site is in the app's five languages, with Hugo's multilingual mode: English at `/`,
+then `/de/`, `/fr/`, `/ja/` and `/zh-hans/`, each in `hugo.toml`'s `[languages]` with
+its description and `og.<lang>.jpg`. A page's translation is `<page>.<lang>.md`, the
+template's words are in `i18n/<lang>.toml`, and the footer links each page's other
+languages. No redirect by browser language. `mise run check` fails when a page or an
+i18n key is missing in a language (`scripts/languages.sh`, and Hugo's
+`--printI18nWarnings`). cspell checks English only.
+
+The words are the app's: `Localizable.xcstrings` and `Docs/app-store/<locale>/` in the
+LittleFaker repo, following its `Docs/translation.md` (du in German, vous in French, a
+non-breaking space before French `:`, `!` and `?`, 拷贝 and 你 in Chinese). The privacy
+page says in each language that it is a translation and the English one counts.
 
 Hugo doesn't run template code inside Markdown files: a loop over data goes in a
 shortcode in `layouts/_shortcodes/`. A link with spaces needs angle brackets:
