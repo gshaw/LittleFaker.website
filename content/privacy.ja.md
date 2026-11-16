@@ -2,7 +2,7 @@
 title: Little Fakerプライバシーポリシー
 ---
 
-_このページは翻訳です。[英語版](/privacy/)が正式なものです。_
+_このページは翻訳です。[英語版](https://littlefaker.gshaw.ca/privacy/)が正式なものです。_
 
 最終更新日：2026年11月14日
 

@@ -2,7 +2,7 @@
 title: Politique de confidentialité de Little Faker
 ---
 
-_Ceci est une traduction. Seule la [version anglaise](/privacy/) fait foi._
+_Ceci est une traduction. Seule la [version anglaise](https://littlefaker.gshaw.ca/privacy/) fait foi._
 
 Dernière mise à jour : 14 novembre 2026
 

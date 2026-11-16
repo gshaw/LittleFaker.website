@@ -2,7 +2,7 @@
 title: Little Faker – Datenschutzerklärung
 ---
 
-_Dies ist eine Übersetzung. Maßgeblich ist die [englische Fassung](/privacy/)._
+_Dies ist eine Übersetzung. Maßgeblich ist die [englische Fassung](https://littlefaker.gshaw.ca/privacy/)._
 
 Zuletzt aktualisiert am 14. November 2026
 
