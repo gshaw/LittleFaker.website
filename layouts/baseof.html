@@ -5,12 +5,29 @@
 
 <body>
   <main class="container">
-    <h1>
-      <a href="{{ "/" | relLangURL }}">
-        <img alt="{{ T "appIcon" (dict "Title" site.Title) }}" src="{{ site.Params.icon }}" width="50" height="50">
-      </a>
-      <span style="vertical-align: middle">{{ .Title }}</span>
-    </h1>
+    <header class="top">
+      <h1>
+        {{- /* No space inside the link, or it shows an underline on hover. */}}
+        <a href="{{ "/" | relLangURL }}"><img alt="{{ T "appIcon" (dict "Title" site.Title) }}" src="{{ site.Params.icon }}" width="50" height="50"></a>
+        <span style="vertical-align: middle">{{ .Title }}</span>
+      </h1>
+      {{- /* The language menu: Pico's dropdown, so no script. */}}
+      <details role="list" dir="rtl" class="languages">
+        <summary aria-haspopup="listbox" role="link" dir="ltr">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+          {{ .Language.Label }}
+        </summary>
+        <ul role="listbox" dir="ltr">
+          {{- range .AllTranslations }}
+          {{- if eq .Language.Lang $.Language.Lang }}
+          <li><a aria-current="page" lang="{{ .Language.Locale }}"><strong>{{ .Language.Label }}</strong></a></li>
+          {{- else }}
+          <li><a href="{{ .RelPermalink }}" hreflang="{{ .Language.Locale }}" lang="{{ .Language.Locale }}">{{ .Language.Label }}</a></li>
+          {{- end }}
+          {{- end }}
+        </ul>
+      </details>
+    </header>
 
     {{ block "main" . }}{{ .Content }}{{ end }}
 
@@ -24,16 +41,6 @@
       <a href="{{ "/privacy/" | relLangURL }}">{{ T "privacy" }}</a>
       •
       © {{ site.Params.start_year }} - {{ now.Year }} <a href="{{ site.Params.author.url }}">{{ site.Params.author.name }}</a>
-    </p>
-    <p>
-      {{- range $i, $page := .AllTranslations }}
-      {{- if $i }} • {{ end }}
-      {{- if eq $page.Language.Lang $.Language.Lang }}
-      <strong>{{ $page.Language.Label }}</strong>
-      {{- else }}
-      <a href="{{ $page.RelPermalink }}" hreflang="{{ $page.Language.Locale }}" lang="{{ $page.Language.Locale }}">{{ $page.Language.Label }}</a>
-      {{- end }}
-      {{- end }}
     </p>
   </main>
 </body>
