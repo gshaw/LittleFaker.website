@@ -16,4 +16,4 @@ Questions or problems? Email me at [gerry_shaw@yahoo.com](<mailto:gerry_shaw@yah
 
 1. **Which macOS does it need?** Version 1.2 needs macOS 15 or later. On macOS 12 to 14 the Mac App Store offers 1.1.2, the last version that runs there.
 
-1. **macOS showed "Login Item Added" when I turned on Open at login.** That's normal. macOS shows it once for any app that adds a login item. You can manage them in System Settings → General → Login Items & Extensions.
+1. **macOS showed "Login Item Added" when I turned on Open Little Faker at Login.** That's normal. macOS shows it once for any app that adds a login item. You can manage them in System Settings → General → Login Items & Extensions.
