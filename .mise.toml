@@ -43,7 +43,7 @@ run = """
 set -e
 curl -fsS https://littlefaker.gshaw.ca/ | grep -q "<title>Little Faker"
 echo "littlefaker.gshaw.ca is up"
-curl -fsS -o /dev/null https://littlefaker.gshaw.ca/screenshots/fake-info.jpg
+curl -fsS -o /dev/null https://littlefaker.gshaw.ca/screenshots/contact.jpg
 echo "The screenshot is there"
 test "$(curl -s -o /dev/null -w '%{http_code}' https://littlefaker.gshaw.ca/no-such-page/)" = 404
 echo "404 page works"

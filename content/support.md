@@ -8,7 +8,7 @@ Questions or problems? Email me at [gerry_shaw@yahoo.com](<mailto:gerry_shaw@yah
 
 1. **How do I give a menu item a keyboard shortcut?** Open Settings from the menu. Under Keyboard Shortcuts, pick the item from Add Shortcut…, click its field and press the keys. A shortcut needs ⌘ or ⌃ and works in every app. Open Menu and Copy Again can have one too. If another app already uses the keys, Settings tells you and doesn't save them.
 
-1. **How do I change the language?** Pick it from Language in the menu, or in Settings. It sets what Words, Sentences and Paragraphs copy, and which country Fake Info looks like. It starts on your Mac's language. The menu and Settings themselves follow your Mac's language.
+1. **How do I change the language?** Pick it from Language in Settings. It sets what Words, Sentences and Paragraphs copy, and which country Contact looks like. It starts on your Mac's language. The menu and Settings themselves follow your Mac's language.
 
 1. **What do the tips unlock?** Nothing. Every feature is free. The tips are a way to say thanks if you'd like to.
 

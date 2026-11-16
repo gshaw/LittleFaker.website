@@ -60,7 +60,7 @@ SPF, DKIM, DMARC or `apple-domain` records.
   Open Graph tags and the screenshot's style; a page can override the description
   with `description:` and the preview image with `ogimage:` in front matter.
 - `content/`: `_index.md` (the home page), `support.md`, `privacy.md`, `404.md`.
-- The home page shows one screenshot, Fake Info, as `<figure class="shot">`. On a phone,
+- The home page shows one screenshot, Contact, as `<figure class="shot">`. On a phone,
   CSS crops off the mostly empty left side.
 - `static/` is published as it is: the icon (rendered from the app's `AppIcon.icon` with
   Icon Composer's `ictool`), the QR code, `og.jpg`, `pico.min.css` (Pico 1.5, copied in)

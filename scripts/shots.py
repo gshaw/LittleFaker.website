@@ -1,5 +1,5 @@
 # cspell:ignore LANCZOS
-# Crops the home page's screenshot, Fake Info from Little Faker's 1.2 App Store screenshots,
+# Crops the home page's screenshot, Contact from Little Faker's 1.2 App Store screenshots,
 # and makes og.jpg. Wallpaper is added past the right edge so the page's rounded corners
 # don't clip the menu bar. On a phone, CSS crops the left side off.
 #
@@ -17,7 +17,7 @@ PURPLE = (104, 103, 175)  # the wallpaper
 PAD = 64  # wallpaper added on the right, in screenshot pixels
 
 # The crop (left, top, right, bottom) of the padded screenshot: 5:4, the menus on the right.
-CROP = (924, 0, 2624, 1360)
+CROP = (824, 0, 2624, 1440)
 
 
 def shot(name):
@@ -31,11 +31,11 @@ def shot(name):
 
 def main():
     (OUT / "screenshots").mkdir(parents=True, exist_ok=True)
-    fake_info = shot("3-fake-info")
-    fake_info.crop(CROP).save(OUT / "screenshots/fake-info.jpg", quality=82, optimize=True, progressive=True)
-    print("wrote static/screenshots/fake-info.jpg")
+    contact = shot("3-contact")
+    contact.crop(CROP).save(OUT / "screenshots/contact.jpg", quality=82, optimize=True, progressive=True)
+    print("wrote static/screenshots/contact.jpg")
     # Open Graph: its right side, where the menus are, at 1200x630.
-    og = fake_info.crop((1040, 0, 2624, 832)).resize((1200, 630), Image.LANCZOS)
+    og = contact.crop((1040, 0, 2624, 832)).resize((1200, 630), Image.LANCZOS)
     og.save(OUT / "og.jpg", quality=84, optimize=True)
     print("wrote static/og.jpg")
 
