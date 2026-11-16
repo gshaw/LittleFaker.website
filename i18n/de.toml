@@ -1,0 +1,3 @@
+appIcon = "App-Symbol von {{ .Title }}"
+support = "Support"
+privacy = "Datenschutzerklärung"

@@ -2,7 +2,7 @@
 
 [https://littlefaker.gshaw.ca](https://littlefaker.gshaw.ca)
 
-<img alt="Little Faker's menu with Fake Info open" src="static/screenshots/fake-info.jpg" width="400">
+<img alt="Little Faker's menu with Contact open" src="static/screenshots/contact.jpg" width="400">
 
 ## Develop
 

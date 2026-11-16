@@ -9,6 +9,9 @@ ignorePaths:
   - "resources"
   - "tmp"
   - "static"
+  # English only: the other languages are checked by reading them.
+  - "content/**/*.{de,fr,ja,zh-hans}.md"
+  - "i18n/{de,fr,ja,zh-hans}.toml"
 words:
   - gshaw
   - littlefaker
