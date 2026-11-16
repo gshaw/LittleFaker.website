@@ -11,7 +11,7 @@ import subprocess
 from PIL import Image
 
 REPO = pathlib.Path.home() / "Developer/LittleFaker"
-REF = "origin/27-app-store-screenshots"  # LittleFaker PR #52; main once it merges
+REF = "origin/main"  # LittleFaker's Assets/Screenshots/<locale>/
 OUT = pathlib.Path(__file__).resolve().parent.parent / "static"
 PURPLE = (104, 103, 175)  # the wallpaper
 PAD = 64  # wallpaper added on the right, in screenshot pixels
