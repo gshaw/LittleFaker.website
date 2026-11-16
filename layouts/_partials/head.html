@@ -50,5 +50,35 @@
         object-position: right top
       }
     }
+
+    /* The title, with the language menu at its right. */
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem
+    }
+
+    .languages {
+      margin: 0
+    }
+
+    .languages summary {
+      white-space: nowrap
+    }
+
+    .languages svg {
+      vertical-align: -3px;
+      margin-right: .25em
+    }
+
+    .languages ul {
+      width: max-content;
+      min-width: 100%
+    }
+
+    .languages ul li {
+      padding: .35rem 1rem
+    }
   </style>
 </head>
