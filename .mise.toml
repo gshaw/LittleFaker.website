@@ -52,7 +52,7 @@ curl -fsS -o /dev/null https://littlefaker.gshaw.ca/screenshots/contact.jpg
 echo "The screenshot is there"
 for pair in de:de fr:fr ja:ja zh-hans:zh-Hans; do
   lang=${pair%%:*}
-  curl -fsS "https://littlefaker.gshaw.ca/$lang/" | grep -q "<html lang=\"${pair#*:}\">"
+  curl -fsS "https://littlefaker.gshaw.ca/$lang/" | grep -q "<html lang=\\\"${pair#*:}\\\">"
   curl -fsS -o /dev/null "https://littlefaker.gshaw.ca/screenshots/contact.$lang.jpg"
   curl -fsS -o /dev/null "https://littlefaker.gshaw.ca/$lang/support/"
   curl -fsS -o /dev/null "https://littlefaker.gshaw.ca/$lang/privacy/"
