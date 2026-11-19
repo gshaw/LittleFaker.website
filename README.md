@@ -8,7 +8,7 @@
 
 ```sh
 mise install       # Hugo, Node, cspell, markdownlint, lychee, wrangler
-mise run dev       # http://localhost:4004 with live reload
+mise run dev       # https://lf.dev.gshaw.ca with live reload
 mise run check     # build, spell check, markdown lint, internal links
 ```
 

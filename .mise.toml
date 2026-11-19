@@ -10,7 +10,8 @@ lychee = "0.24.2"
 "npm:wrangler" = "4.143.1"
 
 [tasks.dev]
-run = "hugo server --port 4004 --openBrowser"
+description = "Serve the site at https://lf.dev.gshaw.ca, for the Mac and the phone over the tailnet (Caddy on lagoon forwards to :4060)"
+run = "hugo server --port 4060 --bind 127.0.0.1 --baseURL https://lf.dev.gshaw.ca/ --appendPort=false --liveReloadPort 443 --openBrowser"
 
 # --printI18nWarnings with --panicOnWarning: a template string missing in a language fails.
 [tasks.build]
