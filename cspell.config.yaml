@@ -13,6 +13,7 @@ ignorePaths:
   - "content/**/*.{de,fr,ja,zh-hans}.md"
   - "i18n/{de,fr,ja,zh-hans}.toml"
 words:
+  - devhost
   - gshaw
   - littlefaker
   - ogimage # front matter key for the Open Graph image
